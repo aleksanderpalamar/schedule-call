@@ -1,9 +1,9 @@
-import { Button, TextInput, Text } from "@palamar-ui/react";
+import { Button, Text } from "@palamar-ui/react";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormAnnotation } from "./styles";
+import { Form, FormAnnotation, TextInput } from "./styles";
 import { useRouter } from "next/router";
 
 const claimUsernameSchema = z.object({
@@ -11,7 +11,7 @@ const claimUsernameSchema = z.object({
     .string()
     .min(3, { message: "O usuário deve ter pelo menos 3 letras" })
     .regex(/^([a-z\\-]+)$/i, {
-      message: "O usuário deve conter apenas letras e hifens",
+      message: "O usuário pode ter apenas letras e hifens.",
     })
     .transform((username) => username.toLowerCase()),
 });
@@ -37,7 +37,7 @@ export function ClaimUsernameForm() {
 
   return (
     <>
-      <Form as="form" onSubmit={handleSubmit(handleClaimUsername)}>
+      <Form onSubmit={handleSubmit(handleClaimUsername)}>
         <TextInput
           size={1}
           prefix="palamar.app/"

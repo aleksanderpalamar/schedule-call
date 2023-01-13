@@ -41,3 +41,23 @@ export const FormError = styled.span`
   color: ${(props) => props.theme.colors.red};
   font-size: ${(props) => props.theme.fontSizes.sm};
 `;
+
+export const TextInput = styled.input`
+  padding: ${(props) => props.theme.space[3]};
+  border-radius: ${(props) => props.theme.radii.md};
+  border: 1px solid ${(props) => props.theme.colors.purple300};
+  background-color: ${(props) => props.theme.colors.gray900};
+  color: ${(props) => props.theme.colors.gray100};
+
+  &:focus {
+    outline: 1px solid ${(props) => props.theme.colors.purple300};
+  }
+
+  &::placeholder {
+    color: ${(props) => props.theme.colors.gray400};
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+`

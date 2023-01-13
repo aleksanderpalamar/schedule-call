@@ -15,6 +15,7 @@ export const defaultTheme = {
     gray900: colors.gray900,
 
     red: colors.red300,
+    warning: colors.yellow300,
 
     purple300: colors.palamar300,
     purple500: colors.palamar500,
