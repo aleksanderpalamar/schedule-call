@@ -4,6 +4,7 @@ import { Button, Checkbox, Heading, MultiStep, Text } from "@palamar-ui/react";
 import { ArrowRight, Warning } from "phosphor-react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
+import { api } from "../../../lib/axios";
 import { convertTimeStringToMinutes } from "../../../utils/conver-time-string-to-minutes";
 import { getWeekDays } from "../../../utils/get-week-days";
 import { Container, Header } from "../styles";
@@ -90,8 +91,9 @@ export default function TimeIntervals() {
   const intervals = watch("intervals");
 
   async function handleSetTimeIntervals(data: any) {
-    const formData = data as timeIntervalsFormOutput;
-    console.log(formData);
+    const {intervals} = data as timeIntervalsFormOutput;
+    
+    await api.post("/users/time-intervals", {intervals})
   } 
 
   return (
