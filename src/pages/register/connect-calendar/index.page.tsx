@@ -1,7 +1,7 @@
 import { Button, Heading, MultiStep, Text } from "@palamar-ui/react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { ArrowRight, Check } from "phosphor-react";
+import { ArrowRight, Check, Warning } from "phosphor-react";
 //import { api } from "../../lib/axios";
 import { Container, Header } from "../styles";
 import { AuthError, ConnectBox, ConnectItem } from "./styles";
@@ -45,7 +45,7 @@ export default function ConnectCalendar() {
 
         {hasAuthError && (
           <AuthError>
-            <span>Warning:</span> Falha ao se conectar com o Google, verifique se você habilitou as
+            <Warning size={28} /> Falha ao se conectar com o Google, verifique se você habilitou as
             permissões de acesso ao Google Calendar. E tente novamente.
           </AuthError>
         )}

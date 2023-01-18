@@ -32,7 +32,7 @@ export const Input = styled.input`
   font-size: ${(props) => props.theme.fontSizes.sm};
   font-weight: ${(props) => props.theme.fontWeights.regular};
   border: none;
-  width: 100%;
+  width: 100%;  
 
   &:focus {
     outline: none;

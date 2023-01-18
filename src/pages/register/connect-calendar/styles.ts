@@ -44,26 +44,19 @@ export const Header = styled.div`
 `;
 
 export const AuthError = styled.span`
-  color: ${(props) => props.theme.colors.warning};
-  font-size: ${(props) => props.theme.fontSizes.xs};
-  margin-bottom: ${(props) => props.theme.space[4]};
-  outline: 1px solid ${(props) => props.theme.colors.warning};
-  border-radius: ${(props) => props.theme.radii.md};
-  padding: ${(props) => props.theme.space[2]};
   display: flex;
   align-items: center;
+  gap: ${(props) => props.theme.space[1]};
+  color: ${(props) => props.theme.colors.red};
+  font-size: ${(props) => props.theme.fontSizes.xs}; 
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  margin-bottom: ${(props) => props.theme.space[4]};
   word-wrap: break-word;
-  gap: ${(props) => props.theme.space[2]};
-  line-height: ${(props) => props.theme.lineHeights.short};
-  opacity: 0.8;
-
-  > span {
+  svg {
     background-color: ${(props) => props.theme.colors.warning};
     opacity: 0.8;
     color: ${(props) => props.theme.colors.gray900};
-    padding: ${(props) => props.theme.space[1]} ${(props) => props.theme.space[2]};
-    border-radius: ${(props) => props.theme.radii.md};
-    font-size: ${(props) => props.theme.fontSizes.xs};
-    font-weight: ${(props) => props.theme.fontWeights.bold};
+    border-radius: 4px;
+    padding: ${(props) => props.theme.space[1]};
   }
 `
