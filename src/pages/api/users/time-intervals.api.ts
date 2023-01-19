@@ -18,15 +18,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.method != "POST") {
+    res.status(405).end();
+  }
+
   const session = await unstable_getServerSession(
     req,
     res,
     buildNextAuthOptions(req, res)
-  );
-
-  if (req.method != "POST") {
-    res.status(405).end();
-  }
+  ); 
 
   if (!session) {
     return res.status(401).end();
