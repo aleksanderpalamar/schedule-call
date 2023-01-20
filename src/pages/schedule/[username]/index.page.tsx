@@ -12,8 +12,6 @@ interface ScheduleProps {
 }
 
 export default function Schedule({ user }: ScheduleProps) {
-  console.log(user);
-
   return (
     <Container>
       <UserHeader>
@@ -26,20 +24,6 @@ export default function Schedule({ user }: ScheduleProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  {/* 
-    const users = await prisma.user.findMany({
-    select: {
-      username: true,
-    }
-  });
-
-  const paths = users.map(user => ({
-    params: {
-      username: user.username,
-    }
-  }));
-*/}
-
   return {
     paths: [],
     fallback: "blocking",
