@@ -1,6 +1,8 @@
 import { Avatar } from "@palamar-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 import { prisma } from "../../../lib/prisma";
+import { ScheduleForm } from "./ScheduleForm/ConfirmStep";
 import { Container, UserHeader } from "./styles";
 
 interface ScheduleProps {
@@ -13,19 +15,33 @@ interface ScheduleProps {
 
 export default function Schedule({ user }: ScheduleProps) {
   return (
-    <Container>
-      <UserHeader>
-        <Avatar src={user.avatarUrl} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.bio}</p>
-      </UserHeader>
-    </Container>
+    <>
+      <NextSeo title={`Agendar com ${user.name} | Schedule Call`} />
+      <Container>
+        <UserHeader>
+          <Avatar src={user.avatarUrl} />
+          <h2>{user.name}</h2>
+          <p>{user.bio}</p>
+        </UserHeader>
+        <ScheduleForm />
+      </Container>
+    </>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const usernames = await prisma.user.findMany({
+    select: {
+      username: true,
+    }
+  })
+
+  const paths = usernames.map((username) => ({
+    params: { username: username.username },
+  }))  
+
   return {
-    paths: [],
+    paths,
     fallback: "blocking",
   };
 };
@@ -53,6 +69,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         avatarUrl: user.avatar_url,
       },
     },
-    revalidate: 60 * 60 * 24, // 24 hours
+    revalidate: 60 * 60 * 24, // 1 day
   };
 };

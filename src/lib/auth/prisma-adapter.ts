@@ -1,11 +1,11 @@
-import { NextApiRequest, NextApiResponse, NextPageContext } from "next";
-import { Adapter } from "next-auth/adapters";
-import { prisma } from "../prisma";
-import { parseCookies, destroyCookie } from "nookies"
+import { NextApiRequest, NextApiResponse, NextPageContext } from 'next'
+import { Adapter } from 'next-auth/adapters'
+import { destroyCookie, parseCookies } from 'nookies'
+import { prisma } from '../prisma'
 
 export function PrismaAdapter(
   req: NextApiRequest | NextPageContext['req'],
-  res: NextApiResponse | NextPageContext['res'],
+  res: NextApiResponse | NextPageContext['res']
   ): Adapter {
   return {
     async createUser(user) {
@@ -23,7 +23,7 @@ export function PrismaAdapter(
           name: user.name,
           email: user.email,
           avatar_url: user.avatar_url,
-        }
+        },
       })
 
       destroyCookie({ res }, '@schedulecall:userId', {
@@ -35,8 +35,8 @@ export function PrismaAdapter(
         name: prismaUser.name,
         username: prismaUser.username,
         email: prismaUser.email!,
-        emailVerified: null,
         avatar_url: prismaUser.avatar_url!,
+        emailVerified: null,
       }
     },
 
