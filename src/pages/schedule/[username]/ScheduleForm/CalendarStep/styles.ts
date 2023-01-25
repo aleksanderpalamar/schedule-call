@@ -1,14 +1,99 @@
-import styled from "styled-components";
+import { Box, styled, Text } from "@ignite-ui/react";
 
-export const Container = styled.div`
-  margin-top: ${(props) => props.theme.space[6]};
-  padding: 0;
-  display: grid;
-  max-width: 100%;
-  position: relative;
-  background-color: ${(props) => props.theme.colors.gray800};
-  border-radius: 6px;
+export const Container = styled(Box, {
+  margin: '$6 auto 0',
+  padding: 0,
+  display: 'grid',
+  maxWidth: '100%',
+  position: 'relative',
+  border: 'none',
 
-  width: 540px;
-  grid-template-columns: 1fr;
-`
+  variants: {
+    isTimerPickerOpen: {
+      true: {
+        gridTemplateColumns: '1fr 280px',
+
+        "@media (max-width: 900px)": {
+          gridTemplateColumns: '1fr',
+        }
+      },
+      false: {
+        width: 540,
+        gridTemplateColumns: '1fr'
+      },
+    }
+  }
+})
+
+export const TimePicker = styled('div', {
+  borderLeft: '1px solid $gray600',
+  padding: '$6 $6 0',
+  overflowY: 'scroll',
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  right: 0,
+  width: 280,
+  
+  '&::-webkit-scrollbar': {
+    width: 8,
+    backgroundColor: '$gray700',
+
+    '&-thumb': {
+      backgroundColor: '$gray600',
+      borderRadius: '$sm',
+    }
+  }
+})
+
+export const TimePickerHeader = styled(Text, {
+  fontWeight: '$medium',
+
+  'span': {
+    color: '$gray200',
+    
+    'span': {
+      textTransform: 'capitalize',
+    }
+  }
+})
+
+export const TimePickerList = styled('div', {
+  display: 'grid',
+  marginTop: '$3',
+  gridTemplateColumns: '1fr',
+  gap: '$2',
+
+  '@media (min-width: 900px)': {
+    gridTemplateColumns: '2fr',
+  }
+})
+
+export const TimePickerItem = styled('button', {
+  border: 0,
+  backgroundColor: '$gray600',
+  padding: '$2 0',
+  cursor: 'pointer',
+  borderRadius: '$sm',
+  color: '$gray100',
+  fontSize: '$sm',
+  lineHeight: '$base',
+
+  '&:last-child': {
+    marginBottom: '$6',
+  },
+
+  '&:disabled': {
+    background: 'none',
+    cursor: 'default',
+    opacity: 0.4,
+  },
+
+  '&:not(:disabled):hover': {
+    background: '$gray500',
+  },
+
+  '&:focus': {
+    boxShadow: '0 0 0 2px $colors$gray100',
+  }
+})

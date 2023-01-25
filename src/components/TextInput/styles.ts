@@ -6,7 +6,7 @@ export const TextInputContainer = styled.div`
   border-radius: ${(props) => props.theme.radii.md};
   display: flex;
   align-items: center;
-  border: 2px solid ${(props) => props.theme.colors.purple300};
+  border: 2px solid transparent;
 
   &:has(input:focus) {
     border: 2px solid ${(props) => props.theme.colors.purple300};
