@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\Calendar"
+    "\\src\\components\\Calendar",
+    "\\src\\pages\\schedule\\[username]"
   ],
-  "SelectedNode": "\\src\\components\\Calendar\\index.tsx",
+  "SelectedNode": "\\src\\components\\Calendar\\styles.ts",
   "PreviewInSolutionExplorer": false
 }
